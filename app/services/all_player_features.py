@@ -17,12 +17,20 @@ def duel_with_friend():
     user1_score = 0
     user2_score = 0
 
-    while user1_score < 3 or user2_score < 3:
+    # Changed condition to continue while neither player has won
+    while user1_score < 3 and user2_score < 3:
+        print(f"\nРахунок: Користувач 1 - {user1_score}, Користувач 2 - {user2_score}")
         print("Раунд починається!")
-        topic_category = input("Введіть категорію (Навчання, Творчість, Програмування): ")
-        if topic_category not in ["Навчання", "Творчість", "Програмування"]:
+        
+        topic_category = input("Введіть категорію (Навчання, Творчість, Програмування або Вихід): ")
+        if topic_category not in ["Навчання", "Творчість", "Програмування", "Вихід"]:
             print("Невірна категорія. Спробуйте ще раз.")
             continue
+
+        if topic_category == "Вихід":
+            print("Дякуємо за гру!")
+            break
+
         print(f"Категорія: {topic_category}")
         print("Кожен користувач по черзі вводить свій промт.")
         print("Початок раунду! Удачі!")
@@ -44,10 +52,13 @@ def duel_with_friend():
             print("Користувач 2 виграв раунд!")
         else:
             print("Нічия!")
-
+    print("\nФінальний рахунок:")
+    print(f"Користувач 1: {user1_score}")
+    print(f"Користувач 2: {user2_score}")
+    
     if user1_score == 3:
         print("Користувач 1 виграв гру!")
-    else:
+    elif user2_score == 3:
         print("Користувач 2 виграв гру!")
 
 
